@@ -8,20 +8,19 @@ module TicTacToe
         
         def initialize
 
-            @board = BASE_BOARD.to_a
-            @players = [Player.new(1, "X"), Player.new[0, "O"]]
-            current_player = @players.
+            @board = BASE_BOARD
+            @players = [Player.new(1, "X"), Player.new(0, "O")]
             print_board
-            
+
         end
 
         def print_board
 
-            puts " #{@board[0][1]} | #{@board[0][1]} | #{@board[0][2]} "
-            puts "--+--+--"
-            puts " #{@board[1][1]} | #{@board[1][1]} | #{@board[1][2]} "
-            puts "--+--+--"
-            puts " #{@board[2][1]} | #{@board[2][1]} | #{@board[2][2]} "
+            puts " #{@board[0][0]} | #{@board[0][1]} | #{@board[0][2]} "
+            puts "---+---+---"
+            puts " #{@board[1][0]} | #{@board[1][1]} | #{@board[1][2]} "
+            puts "---+---+---"
+            puts " #{@board[2][0]} | #{@board[2][1]} | #{@board[2][2]} "
 
         end
 
@@ -33,6 +32,15 @@ module TicTacToe
         end
         
         def switch_turn
+
+            if @players[0].current_player == 1
+                @players[0].current_player = 0
+                @players[1].current_player = 1
+            else
+                @players[1].current_player = 1
+                @players[0].current_player = 0
+            end 
+            
         end
 
         class Player
@@ -48,6 +56,10 @@ module TicTacToe
 
     end
 end
+
+include TicTacToe
+
+play = Game.new()
 
 
     
